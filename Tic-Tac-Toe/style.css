@@ -1,0 +1,239 @@
+/* Reset and basics */
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+body.light {
+  background: #f0f0f0;
+  color: #222;
+}
+
+/* Header */
+header {
+  margin: 20px;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+header button {
+  background: transparent;
+  border: 2px solid white;
+  border-radius: 5px;
+  color: white;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-weight: bold;
+}
+body.light header button {
+  border-color: #222;
+  color: #222;
+}
+
+/* Status text */
+#status {
+  margin: 10px 0 15px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Board */
+#board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 10px;
+  margin-bottom: 15px;
+  user-select: none;
+}
+
+body.light #board {
+  filter: drop-shadow(0 0 3px #ccc);
+}
+
+.cell {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  font-size: 3.5rem;
+  font-weight: 900;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.3s;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+.cell:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+body.light .cell {
+  background: #ddd;
+  color: #222;
+}
+
+body.light .cell:hover {
+  background: #ccc;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  max-width: 400px;
+  width: 100%;
+}
+
+.controls label {
+  align-self: center;
+  font-weight: 600;
+}
+
+.controls select,
+.controls button {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.controls select {
+  min-width: 160px;
+}
+
+.controls button {
+  background: #764ba2;
+  color: white;
+  border: 2px solid transparent;
+  transition: background 0.3s, border 0.3s;
+}
+
+.controls button:hover {
+  background: #5e3a83;
+  border-color: white;
+}
+
+body.light .controls button {
+  background: #667eea;
+  color: white;
+}
+
+body.light .controls button:hover {
+  background: #4b63c4;
+}
+
+/* Scoreboard */
+.scoreboard {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  max-width: 400px;
+  width: 100%;
+}
+
+/* Winner Screen Overlay */
+#winner-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.85);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-weight: 700;
+  z-index: 1000;
+  transition: opacity 0.3s ease;
+}
+
+#winner-screen.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#winner-message {
+  margin-bottom: 30px;
+}
+
+#winner-screen button {
+  padding: 12px 30px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: #667eea;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  transition: background 0.3s;
+}
+
+#winner-screen button:hover {
+  background: #4b63c4;
+}
+
+/* Winning line */
+#winning-line {
+  position: absolute;
+  height: 5px;
+  background: #ffeb3b;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Responsive */
+@media (max-width: 420px) {
+  #board {
+    grid-template-columns: repeat(3, 80px);
+    grid-template-rows: repeat(3, 80px);
+    gap: 8px;
+  }
+  .cell {
+    font-size: 2.5rem;
+  }
+  header h1 {
+    font-size: 1.6rem;
+  }
+  #status {
+    font-size: 1.1rem;
+  }
+  .controls {
+    flex-direction: column;
+    align-items: center;
+  }
+  .scoreboard {
+    flex-direction: column;
+    gap: 15px;
+  }
+}

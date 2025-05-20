@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tic-Tac-Toe</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Tic-Tac-Toe</h1>
+    <button id="theme-toggle">Dark</button>
+  </header>
+
+  <main>
+    <div id="status">Player X's Turn</div>
+    <div id="board"></div>
+
+    <div class="controls">
+      <label for="mode-select">Mode:</label>
+      <select id="mode-select">
+        <option value="pvp">Player vs Player</option>
+        <option value="easy">Player vs AI (Easy)</option>
+        <option value="hard">Player vs AI (Hard)</option>
+      </select>
+      <button id="new-game-btn">New Game</button>
+    </div>
+
+    <div class="scoreboard">
+      <div>X Wins: <span id="x-wins">0</span></div>
+      <div>O Wins: <span id="o-wins">0</span></div>
+      <div>Draws: <span id="draws">0</span></div>
+    </div>
+  </main>
+
+  <div id="winner-screen" class="hidden">
+    <div id="winner-message"></div>
+    <button id="new-game-btn-winner">New Game</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
